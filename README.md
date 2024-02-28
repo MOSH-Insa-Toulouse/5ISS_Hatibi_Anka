@@ -41,7 +41,7 @@ You will also need:
 ### Results
 The application transmits a message upon gas detection, represented by the digit "1" equivalent to "0x31" in ASCII. Subsequent messages are withheld until the gas level drops below the predefined threshold, triggering the transmission of a "0" interpreted as "0x30" in ASCII.
 
-![Circuit ](Images/arduino_circuit.jpg)
+![Circuit ](Images/arduino_circuit.png)
 
 ## AIME Gas Sensor and KiCad
 Following our initial exploration with the industrial sensor, we delved into the development of the ultimate project.
@@ -71,7 +71,7 @@ The gas sensor made has a huge resistance which varies depending on the presence
 The amplifier is based on 3 different filters, each with their own cutoff frequency. The first filter is centered around C1, R1 and R5, the second one from C4 and R3 and the last one from C2 and R4.
 To better simulate the behaviour of the circuit, we created a component to simulate the gas sensor behavior as closely as possible. The sensor component is actually a circuit itself:
 
-![Circuit for simulating the sensor](Images/simu_sensorpng)
+![Circuit for simulating the sensor](Images/simu_sensor.png)
 
 The circuit as a whole is as follows:
 
@@ -121,7 +121,7 @@ And the gas sensor conceived at AIME in a TO-5 10-pin package. The PCB is made t
 
 Below is a view of the routed PCB on KiCad.
 
-![kicad](Image/pcb.png)
+![kicad](Images/pcb.png)
 
 ## Programming the Sensor
 
