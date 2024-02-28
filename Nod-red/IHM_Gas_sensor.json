@@ -1,0 +1,145 @@
+[
+    {
+        "id": "509e65571243a84e",
+        "type": "tab",
+        "label": "Flux 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "03c1b987c58cfe47",
+        "type": "mqtt in",
+        "z": "509e65571243a84e",
+        "name": "Aplli_shirp",
+        "topic": "application/f1bee2eb-8631-488f-9d2a-7e2edf237d37/#",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "fb4beb4f3a2adec3",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "26561d079445f62e"
+            ]
+        ]
+    },
+    {
+        "id": "e04df20eb62f5b29",
+        "type": "debug",
+        "z": "509e65571243a84e",
+        "name": "msg payload",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "26561d079445f62e",
+        "type": "function",
+        "z": "509e65571243a84e",
+        "name": "64_to_char",
+        "func": "let buff = new Buffer(msg.payload.data, 'base64');\nlet text =buff.toString('ascii');\nlet val =text.charCodeAt(text);\n\n\nreturn {\"payload\":text};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 100,
+        "wires": [
+            [
+                "e04df20eb62f5b29",
+                "ca35ceed5f46f82e"
+            ]
+        ],
+        "icon": "node-red/comment.svg"
+    },
+    {
+        "id": "ca35ceed5f46f82e",
+        "type": "ui_gauge",
+        "z": "509e65571243a84e",
+        "name": "",
+        "group": "b6cb91e906eb4c92",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Gauge",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 750,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "fb4beb4f3a2adec3",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "srv-chirpstack.insa-toulouse.fr",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "b6cb91e906eb4c92",
+        "type": "ui_group",
+        "name": "Dashboard Gas Sensor ",
+        "tab": "6458c84a66154e02",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "6458c84a66154e02",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
